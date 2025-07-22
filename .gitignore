@@ -13,3 +13,4 @@ watchdir.py
 bak/
 .idea
 __pycache__/
+client.py

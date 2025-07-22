@@ -153,3 +153,9 @@ def login_encrypt(data, public_key_str, key, iv):
 ### 写不下去了
 
 **去github看代码吧，我实在不会写文档，所有代码使用python写**
+
+仓库地址：https://github.com/k23223/fnnas-api?tab=readme-ov-file
+
+#### 免责声明
+
+如果此仓库违反了飞牛私有云用户协议，请联系我删除仓库。

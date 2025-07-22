@@ -74,16 +74,15 @@ def get_signature(data: str, key: str) -> str:
 
 
 def get_signature_req(data, key: str):
-    # 需要签名的req
+    # 不需要签名的req
     sign_req = [
-        'user.info',
-        'user.authToken',
-        'file.ls',
-        'file.checkUpload'
+        'encrypted',
+        'util.getSI',
+        'util.crypto.getRSAPub',
     ]
     req = data['req']
     json_str = json.dumps(data, separators=(',', ':'))  # 确保没有空格，等同于 JS 的 JSON.stringify
-    if req in sign_req and key:
+    if req not in sign_req and key:
         return get_signature(json_str, key) + json_str
     return json_str
 

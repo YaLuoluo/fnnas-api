@@ -243,6 +243,24 @@ class MainClient(BaseClient):
         response = await self.request('user.info')
         return response
 
+    async def setting_port(self, force_https=False, redirect=True, http_port=5666, https_port=4333):
+        data = {
+            "data": {
+                "force_https": force_https,  # 强制Https
+                "redirect": redirect,  # 80和443跳转
+                "schema": {
+                    "http": {
+                        "port": http_port
+                    },
+                    "https": {
+                        "port": https_port
+                    }
+                }
+            }
+        }
+        response = await self.request('appcgi.network.gw.setting', **data)
+        return response
+
 
 class FileClient(BaseClient):
     async def _init(self):
@@ -288,7 +306,6 @@ class FileClient(BaseClient):
         # checkUpload
         res = await self._checkUpload(local_path, nas_path.as_posix(), overwrite)
         uploadName = res.get('uploadName')
-
 
         url = 'http://172.22.182.150:5666/upload'
         headers = {
@@ -337,7 +354,8 @@ class FileClient(BaseClient):
             elif action == 'd':
                 await self.download()
 
-    async def start_observer(self, nas_path=None, local_path=os.getcwd(), recursive=False, interval=5, exclude: list = None):
+    async def start_observer(self, nas_path=None, local_path=os.getcwd(), recursive=False, interval=5,
+                             exclude: list = None):
         """
         启动文件变化监听， 原理是对比NAS和本地的修改时间谁更新
         :param nas_path: NAS路径 默认我的文件路径

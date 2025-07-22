@@ -2,11 +2,13 @@ from .encryption import aes_decrypt
 from watchdog.events import FileSystemEventHandler
 from .exceptions import BadRequestError
 
+
 async def HandlerDefault(client, data):
     if "errno" in data:
         error_code = data["errno"]
         raise BadRequestError(error_code, data)
     # 测试抛出错误， 程序会不会停止 如果except Exception就不会，不except Exception就会停止
+
 
 async def HandlerGetRSAPub(client, data):
     client.pub = data.get('pub', None)
@@ -38,6 +40,7 @@ async def HandlerAuthToken(client, data):
 
 async def HandlerFileList(client, data):
     print(data)
+
 
 class AsyncFileEventHandler(FileSystemEventHandler):
     def __init__(self, queue, loop):
