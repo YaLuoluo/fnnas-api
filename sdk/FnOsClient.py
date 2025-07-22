@@ -243,7 +243,7 @@ class MainClient(BaseClient):
         response = await self.request('user.info')
         return response
 
-    async def setting_port(self, force_https=False, redirect=True, http_port=5666, https_port=4333):
+    async def setting_port(self, force_https=False, redirect=True, http_port=5666, https_port=5667):
         data = {
             "data": {
                 "force_https": force_https,  # 强制Https
