@@ -307,9 +307,9 @@ class FileClient(BaseClient):
         res = await self._checkUpload(local_path, nas_path.as_posix(), overwrite)
         uploadName = res.get('uploadName')
 
-        url = 'http://172.22.182.150:5666/upload'
+        url = 'http://117.154.73.48:9722/upload'
         headers = {
-            'Referer': 'http://172.22.182.150:5666/p/assets/upload.worker-CPfLJtMs.js',
+            'Referer': 'http://117.154.73.48:9722/p/assets/upload.worker-CPfLJtMs.js',
             'Trim-Overwrite': str(overwrite),
             'Trim-Token': self.token,
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
