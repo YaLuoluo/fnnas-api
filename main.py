@@ -18,7 +18,7 @@ async def main():
         print("authToken", res)
         
         # 上传文件 上传时修改sdk中的链接地址  懒得写配置项了
-        local_path = r'/workspace/Python/success.txt'
+        local_path = r'success.txt'
         nas_path = f'/vol2/1000/Temp/success.txt' # NAS绝对路径
         res = await client.upload(local_path, nas_path)
         print("upload res", res)
